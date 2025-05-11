@@ -4516,6 +4516,9 @@ fieldset:disabled .btn {
         transition: none
     }
 }
+.nav-link {
+    font-size: 1.125rem
+}
 
 .nav-link:hover,
 .nav-link:focus {
@@ -4622,8 +4625,8 @@ fieldset:disabled .btn {
 }
 
 .navbar-brand {
-    padding-top: .40625rem;
-    padding-bottom: .40625rem;
+    padding-top: .1rem;
+    padding-bottom: .1rem;
     margin-right: 4rem;
     font-size: 1.125rem;
     white-space: nowrap
@@ -15215,7 +15218,8 @@ hr.or::before {
 
 .navbar-brand img {
     width: auto;
-    max-height: 2.5rem
+    width: 75px;
+    height: 75px;
 }
 
 @media (max-width: 575.98px) {
