@@ -122,7 +122,12 @@ Questo comando associa il nome remoto `origin` all'URL del nostro repository su 
 
 ```bash
 git push -u origin main
+
+# nel caso non funzionasse
+
+git push --set-upstream origin master
 ```
+In Git, upstream indica il ramo remoto che il tuo ramo locale “segue” di default per operazioni di fetch, pull e push senza dover specificare ogni volta remoto e ramo di destinazione. Impostare un upstream significa definire una relazione di tracking tra un ramo locale e uno remoto, semplificando così il flusso di lavoro quotidiano
 
 Spieghiamo questo comando: `push` trasferisce i commit dal nostro repository locale al remoto (`origin`). `-u` serve a definire il branch remoto di upstream (collega localmente il branch corrente a quello remoto, così i comandi futuri `git pull` o `git push` sapranno a quale branch fare riferimento di default). `origin main` indica di pushare il branch locale corrente (dovrebbe essere `main`, come creato da `git init`) al branch `main` sul remote. Se il branch remoto `main` non esiste, verrà creato. Dopo aver inviato, Git stamperà qualcosa come:
 
@@ -204,6 +209,10 @@ Scenario: abbiamo un server Ubuntu (può essere una VM, un VPS cloud, o anche la
 
    ```bash
    git push -u origin main
+
+   # nel caso non funzionasse
+
+   git push --set-upstream origin master
    ```
 
    Similmente a prima, questo caricherà i commit sul repository remoto. Essendo un server nuovo, potrebbe chiedere l'autenticazione. **Con URL HTTP/HTTPS, Forgejo/Gitea chiederà username e password** dell'account utente che sta eseguendo l'operazione (cioè il vostro utente admin creato prima). Inseriteli quando richiesto (tip: potete abilitare la cache delle credenziali in Git per non reinserirle ad ogni push, usando ad es. `git config --global credential.helper cache`). In alternativa, **usando l'URL SSH**, l'autenticazione avviene con chiave: dovreste prima aver aggiunto la *chiave pubblica SSH* del vostro client nelle impostazioni utente di Forgejo/Gitea (di solito sotto “Settings” -> “SSH Keys” nell'interfaccia web, simile a come si fa su GitHub). Una volta aggiunta, potete usare `git remote set-url origin git@<ip-server>:<utente>/progetto-demo.git` e poi il push non richiederà password, autenticandosi via chiave. Scegliete il metodo preferito; per molti versi, *gestire le chiavi SSH è il metodo consigliato* anche in ambienti self-hosted, per comodità e sicurezza.
